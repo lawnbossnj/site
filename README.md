@@ -10,13 +10,12 @@ Static marketing site for **Lawn Boss NJ** — landscaping and hardscaping in Ce
 
 ## Stack
 
-- UWC (`WebComponent`) SPA under `centralSite/client/`
-- Entry: `centralSite/client/index.html` + `index.js`
-- App shell: `centralSite/client/modules/app.js`
-- User UI: `centralSite/client/components/user/home-page/` only
-- Static server: `centralSite/server/index.js` (no API / database)
-- Framework: `components/core/` + `components/global/` (UWC library — do not strip)
-- Assets: `centralSite/client/images/`, hero video at client root
+- Site root: **`docs/`** (GitHub Pages–ready)
+- Entry: `docs/index.html` + `docs/index.js`
+- App shell: `docs/modules/app.js`
+- User UI: `docs/components/user/home-page/`
+- Framework: `docs/components/core/` + `docs/components/global/` (UWC)
+- Static server: `server/index.js` (serves `docs/`, SPA fallback to `index.html`)
 
 ## Develop
 
@@ -26,6 +25,8 @@ pnpm start
 pnpm dev
 ```
 
-Serves `centralSite/client/` with SPA fallback to `index.html`.
+Default: `http://localhost:5180/`
 
-For GitHub Pages, publish `centralSite/client/` with SPA fallback to `index.html`.
+## Deploy
+
+Publish the `docs/` folder (GitHub Pages from `/docs` on the default branch).

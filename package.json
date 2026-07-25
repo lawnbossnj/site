@@ -25,7 +25,7 @@
 		"ts-api-utils": "^2.5.0"
 	},
 	"scripts": {
-		"start": "node centralSite/server/index.js",
-		"dev": "nodemon centralSite/server/index.js"
+		"start": "node server/index.js",
+		"dev": "nodemon server/index.js"
 	}
 }

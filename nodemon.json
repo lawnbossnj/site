@@ -1,6 +1,6 @@
 {
-	"watch": ["centralSite/server", "centralSite/database"],
-	"ext": "js,mjs,json",
-	"ignore": ["centralSite/server/.session-secret"],
+	"watch": ["server", "docs"],
+	"ext": "js,mjs,json,css,html",
+	"ignore": ["node_modules", "docs/**/*.private.md"],
 	"delay": "300"
 }
