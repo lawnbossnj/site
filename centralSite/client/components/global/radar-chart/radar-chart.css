@@ -1,0 +1,75 @@
+:host {
+	display: block;
+	inline-size: 100%;
+	min-block-size: 14rem;
+	color: var(--text-main);
+}
+
+.rc {
+	display: grid;
+	gap: var(--space-2, 0.5rem);
+	justify-items: center;
+	--rc-series: var(--cyan, oklch(0.72 0.14 210));
+}
+
+.rc-svg {
+	display: block;
+	inline-size: min(100%, 18rem);
+	aspect-ratio: 1;
+	overflow: visible;
+}
+
+.rc-ring {
+	fill: none;
+	stroke: color-mix(in oklab, var(--border-color, currentColor) 40%, transparent);
+	stroke-width: 1;
+}
+
+.rc-axis {
+	stroke: color-mix(in oklab, var(--border-color, currentColor) 45%, transparent);
+	stroke-width: 1;
+}
+
+.rc-series {
+	fill: color-mix(in oklab, var(--rc-series) 22%, transparent);
+	stroke: var(--rc-series);
+	stroke-width: 2;
+	stroke-linejoin: round;
+}
+
+.rc-label {
+	fill: var(--text-muted, var(--text-main));
+	font-size: 10px;
+}
+
+.rc-legend {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem 0.85rem;
+	justify-content: center;
+	font-size: var(--text-xs, 0.75rem);
+}
+
+.rc-legend-item {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.35rem;
+}
+
+.rc-swatch {
+	inline-size: 0.65rem;
+	block-size: 0.65rem;
+	border-radius: 0.15rem;
+}
+
+.rc-empty {
+	display: grid;
+	place-items: center;
+	min-block-size: 12rem;
+	color: var(--text-muted, var(--text-main));
+	font-size: var(--text-sm, 0.875rem);
+}
+
+.rc-empty[hidden] {
+	display: none !important;
+}

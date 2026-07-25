@@ -1,0 +1,61 @@
+:host {
+	display: flex;
+	flex-direction: column;
+	flex: 1 1 auto;
+	block-size: 100%;
+	min-block-size: 100%;
+	font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+	--lb-ease: cubic-bezier(0.22, 1, 0.36, 1);
+	--lb-dur: 220ms;
+	/* Same dark panel language as previous review-card shell */
+	--bg-panel: oklch(0.23 0.028 155);
+	--surface-border: oklch(0.4 0.02 155 / 0.45);
+	--text-primary: oklch(0.95 0.01 145);
+	--text-muted: oklch(0.72 0.14 148);
+	--elev-1: 0 0.4rem 1.2rem oklch(0 0 0 / 0.25);
+	--elev-hover: 0 0.75rem 1.75rem oklch(0 0 0 / 0.38);
+	color: oklch(0.95 0.01 145);
+	border-radius: var(--radius-lg, 0.75rem);
+	overflow: hidden;
+}
+
+.review-ui-card {
+	display: flex;
+	flex-direction: column;
+	flex: 1 1 auto;
+	block-size: 100%;
+	min-block-size: 100%;
+	color: inherit;
+	transform: translate3d(0, 0, 0);
+	transition: transform var(--lb-dur) var(--lb-ease);
+	will-change: transform;
+}
+
+.review-ui-card:hover {
+	transform: translate3d(0, -0.12rem, 0);
+	--surface-border: oklch(0.55 0.1 150 / 0.4);
+}
+
+.review-stars {
+	color: oklch(0.82 0.14 90);
+	letter-spacing: 0.12em;
+	font-size: 1rem;
+	line-height: 1;
+	margin-block-end: 0.55rem;
+}
+
+.review-quote {
+	margin: 0;
+	font-size: 0.95rem;
+	line-height: 1.6;
+	color: oklch(0.92 0.01 145);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.review-ui-card,
+	.review-ui-card:hover {
+		transition: none;
+		transform: none;
+		will-change: auto;
+	}
+}

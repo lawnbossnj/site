@@ -1,0 +1,6 @@
+:host {
+	display: inline-flex;
+	flex: 0 0 auto;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+}

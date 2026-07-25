@@ -1,0 +1,13 @@
+allowBuilds:
+  esbuild: true
+  lmdb: true
+  msgpackr-extract: true
+onlyBuiltDependencies:
+  - core-js
+  - esbuild
+  - lmdb
+  - lru-cache
+  - msgpackr-extract
+  - os
+  - os-utils
+  - rollup

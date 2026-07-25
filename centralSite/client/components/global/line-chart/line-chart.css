@@ -1,0 +1,81 @@
+:host {
+	display: block;
+	inline-size: 100%;
+	min-block-size: 12rem;
+	color: var(--text-main);
+}
+
+.lc {
+	display: grid;
+	gap: var(--space-2, 0.5rem);
+	inline-size: 100%;
+	block-size: 100%;
+	min-block-size: inherit;
+	--lc-series: var(--cyan, oklch(0.72 0.14 210));
+}
+
+.lc-svg {
+	display: block;
+	inline-size: 100%;
+	block-size: auto;
+	aspect-ratio: 400 / 220;
+	min-block-size: 11rem;
+	overflow: visible;
+}
+
+.lc-grid {
+	stroke: color-mix(in oklab, var(--border-color, currentColor) 35%, transparent);
+	stroke-width: 1;
+	vector-effect: non-scaling-stroke;
+}
+
+.lc-line {
+	fill: none;
+	stroke: var(--lc-series);
+	stroke-width: 2;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	vector-effect: non-scaling-stroke;
+}
+
+.lc-area {
+	fill: color-mix(in oklab, var(--lc-series) 22%, transparent);
+	stroke: none;
+}
+
+.lc-tick {
+	fill: var(--text-muted, var(--text-main));
+	font-size: 10px;
+}
+
+.lc-legend {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem 0.85rem;
+	font-size: var(--text-xs, 0.75rem);
+}
+
+.lc-legend-item {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.35rem;
+}
+
+.lc-swatch {
+	inline-size: 0.65rem;
+	block-size: 0.65rem;
+	border-radius: 0.15rem;
+	background: var(--lc-series);
+}
+
+.lc-empty {
+	display: grid;
+	place-items: center;
+	min-block-size: 11rem;
+	color: var(--text-muted, var(--text-main));
+	font-size: var(--text-sm, 0.875rem);
+}
+
+.lc-empty[hidden] {
+	display: none !important;
+}

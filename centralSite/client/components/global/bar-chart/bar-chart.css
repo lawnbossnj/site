@@ -1,0 +1,67 @@
+:host {
+	display: block;
+	inline-size: 100%;
+	min-block-size: 12rem;
+	color: var(--text-main);
+}
+
+.bc {
+	display: grid;
+	gap: var(--space-2, 0.5rem);
+	inline-size: 100%;
+	--bc-series: var(--cyan, oklch(0.72 0.14 210));
+}
+
+.bc-svg {
+	display: block;
+	inline-size: 100%;
+	aspect-ratio: 400 / 220;
+	min-block-size: 11rem;
+	overflow: visible;
+}
+
+.bc-grid {
+	stroke: color-mix(in oklab, var(--border-color, currentColor) 35%, transparent);
+	stroke-width: 1;
+	vector-effect: non-scaling-stroke;
+}
+
+.bc-bar {
+	fill: var(--bc-series);
+}
+
+.bc-tick {
+	fill: var(--text-muted, var(--text-main));
+	font-size: 10px;
+}
+
+.bc-legend {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem 0.85rem;
+	font-size: var(--text-xs, 0.75rem);
+}
+
+.bc-legend-item {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.35rem;
+}
+
+.bc-swatch {
+	inline-size: 0.65rem;
+	block-size: 0.65rem;
+	border-radius: 0.15rem;
+}
+
+.bc-empty {
+	display: grid;
+	place-items: center;
+	min-block-size: 11rem;
+	color: var(--text-muted, var(--text-main));
+	font-size: var(--text-sm, 0.875rem);
+}
+
+.bc-empty[hidden] {
+	display: none !important;
+}

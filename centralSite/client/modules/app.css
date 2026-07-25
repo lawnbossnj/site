@@ -1,0 +1,23 @@
+:host {
+	display: block;
+	width: 100%;
+	block-size: 100%;
+	overflow: hidden;
+	font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+	font-size: 1rem;
+	line-height: 1.5;
+	color: oklch(0.95 0.01 145);
+	-webkit-font-smoothing: antialiased;
+	background: oklch(0.16 0.02 155);
+}
+
+/* Single scroll surface (body stays overflow:hidden per styles/index.css). */
+.shell-scroll {
+	position: fixed;
+	inset: 0;
+	overflow-y: auto;
+	overflow-x: hidden;
+	scrollbar-gutter: stable;
+	overscroll-behavior: contain;
+	background: oklch(0.16 0.02 155);
+}

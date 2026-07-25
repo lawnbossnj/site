@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<script>
+			// Set a global configuration object before any other scripts run
+			globalThis.CONFIG = {
+				production: false, // Change to true in production
+			};
+		</script>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta
+			name="description"
+			content="Lawn Boss NJ — landscaping, hardscaping, and outdoor living in Middlesex, Monmouth, and Ocean counties. Call (908) 415-1635."
+		/>
+		<!-- Anchor every relative URL to the site root so SPA routes
+			 resolve assets against the site root. -->
+		<base href="/" />
+		<title>Lawn Boss NJ — Lawn Care & Hardscaping</title>
+		<link rel="preload" href="styles/themes/midnight.css" as="style" />
+		<link
+			rel="preload"
+			href="components/global/icon/sprite.svg"
+			as="image"
+			type="image/svg+xml"
+		/>
+		<link rel="preload" href="lawn-boss-nj-hero-section-video.mp4" as="video" type="video/mp4" />
+		<link rel="stylesheet" href="styles/index.css" />
+		<link rel="stylesheet" href="styles/themes/midnight.css" />
+		<!-- Import map must appear before any module that uses the mapped specifier -->
+		<script type="importmap">
+			{
+				"imports": {
+					"@universalweb/utilitylib": "/scripts/utilityLibrary/index.js",
+					"webcomponent": "/components/core/index.js"
+				}
+			}
+		</script>
+		<script type="module" src="/index.js?v=260725lawn"></script>
+	</head>
+
+	<body></body>
+</html>

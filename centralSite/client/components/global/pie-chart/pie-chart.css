@@ -1,0 +1,95 @@
+:host {
+	display: block;
+	inline-size: 100%;
+	min-block-size: 12rem;
+	color: var(--text-main);
+}
+
+.pc {
+	display: grid;
+	gap: var(--space-2, 0.5rem);
+	--pc-series: var(--cyan, oklch(0.72 0.14 210));
+}
+
+.pc-body {
+	display: grid;
+	grid-template-columns: minmax(0, 12rem) minmax(0, 1fr);
+	gap: var(--space-3, 0.75rem);
+	align-items: center;
+}
+
+.pc-svg {
+	display: block;
+	inline-size: 100%;
+	max-inline-size: 14rem;
+	aspect-ratio: 1;
+	justify-self: center;
+}
+
+.pc-slice {
+	fill: var(--pc-series);
+	stroke: color-mix(in oklab, var(--bg-body, Canvas) 70%, transparent);
+	stroke-width: 1.5;
+	cursor: pointer;
+	transition: opacity 0.15s ease;
+}
+
+.pc-slice:hover {
+	opacity: 0.88;
+}
+
+.pc-total {
+	fill: var(--text-main);
+	font-size: 14px;
+	font-weight: 650;
+	pointer-events: none;
+}
+
+.pc-legend {
+	display: grid;
+	gap: 0.4rem;
+	font-size: var(--text-xs, 0.75rem);
+}
+
+.pc-legend-item {
+	display: grid;
+	grid-template-columns: auto 1fr auto;
+	gap: 0.4rem;
+	align-items: center;
+}
+
+.pc-swatch {
+	inline-size: 0.65rem;
+	block-size: 0.65rem;
+	border-radius: 0.15rem;
+}
+
+.pc-legend-value {
+	color: var(--text-muted, var(--text-main));
+	font-variant-numeric: tabular-nums;
+}
+
+.pc-empty {
+	display: grid;
+	place-items: center;
+	min-block-size: 11rem;
+	color: var(--text-muted, var(--text-main));
+	font-size: var(--text-sm, 0.875rem);
+}
+
+.pc-empty[hidden],
+.pc-body[hidden] {
+	display: none !important;
+}
+
+@container (max-width: 24rem) {
+	.pc-body {
+		grid-template-columns: 1fr;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.pc-slice {
+		transition: none;
+	}
+}

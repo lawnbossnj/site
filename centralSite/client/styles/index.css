@@ -1,0 +1,134 @@
+@import './variables.css';
+/* Shared framework modules — single source with the shadow-root manifest. */
+@import '../components/core/styles/modules/reset.css';
+@import '../components/core/styles/modules/elements-forms.css';
+@import '../components/core/styles/modules/elements-prose.css';
+@import '../components/core/styles/modules/util-spacing.css';
+@import '../components/core/styles/modules/util-layout.css';
+@import '../components/core/styles/modules/util-type.css';
+@import '../components/core/styles/modules/util-elevation.css';
+@import '../components/core/styles/modules/util-surface.css';
+@import '../components/core/styles/modules/animations.css';
+@import '../components/core/styles/modules/effects.css';
+
+/* ── Page-level (light DOM) rules ──────────────────── */
+html {
+	font-size: clamp(14px, 1.3vw, 18px);
+	block-size: 100%;
+}
+
+@media (min-width: 160em) {
+	html {
+		font-size: clamp(14px, 1vw, 18px);
+	}
+}
+
+/* Document does NOT scroll — app shell owns .shell-scroll. */
+body {
+	background-color: oklch(0.16 0.02 155);
+	color: oklch(0.95 0.01 145);
+	font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+	font-size: 1rem;
+	line-height: 1.5;
+	width: 100%;
+	block-size: 100%;
+	overflow: hidden;
+	-webkit-font-smoothing: antialiased;
+	cursor: auto;
+}
+
+/*
+ * Tooltip / popup palette — dark glass + lawn-green accents.
+ * Consumed by core tooltips (var(--popup-*)); set on :root so hosts
+ * outside any component shadow (body popovers) inherit them.
+ */
+:root {
+	/* Site / boot palette — dark green outdoor */
+	--boot-bg: oklch(0.14 0.03 155);
+	--boot-text: oklch(0.95 0.01 145);
+	--boot-title: oklch(0.97 0.015 145);
+	--boot-subtitle: oklch(0.72 0.14 148);
+	--boot-glow: oklch(0.55 0.14 150 / 0.42);
+	--boot-accent: oklch(0.62 0.14 150);
+	--boot-accent-2: oklch(0.72 0.15 148);
+	--boot-bar-track: oklch(0.32 0.05 155 / 0.45);
+	/* Align legacy teal/cyan tokens used by splash + chrome */
+	--teal: oklch(0.55 0.12 155);
+	--cyan: oklch(0.72 0.14 150);
+	--bg-dark: oklch(0.14 0.03 155);
+
+	--popup-bg: oklch(0.17 0.035 155 / 0.96);
+	--popup-bg-hover: oklch(0.2 0.04 155 / 0.98);
+	--popup-glass-bg: oklch(0.15 0.04 155 / 0.9);
+	--popup-glass-blur: blur(14px) saturate(1.35);
+	--popup-border: oklch(0.62 0.14 150 / 0.42);
+	--popup-border-hover: oklch(0.72 0.15 148 / 0.55);
+	--popup-accent: oklch(0.72 0.15 148);
+	--popup-text: oklch(0.96 0.015 145);
+	--popup-shadow:
+		0 10px 28px oklch(0.1 0.03 155 / 0.55),
+		0 0 0 1px oklch(0.55 0.12 150 / 0.22),
+		0 0 20px oklch(0.55 0.14 150 / 0.18),
+		inset 0 1px 0 oklch(1 0 0 / 0.1);
+	/* Tooltip breathe / glow (see tooltip.css --tooltip-glow) */
+	--popup-glow: oklch(0.62 0.14 150 / 0.4);
+}
+
+/* ── Buttons ──────────────────────────────────────────── */
+button,
+[role='button'] {
+	cursor: pointer;
+}
+
+/* ── Mobile tap polish ───────────────────────────────────
+   Strip the grey/blue translucent rectangle WebKit/Chromium
+   paint on tap. Universal because shadow roots inherit the
+   property and the visual is wrong everywhere in this UI —
+   we use focus-visible rings for keyboard focus and never
+   want the OS tap flash on top of our own hover/active
+   states. `touch-action: manipulation` on interactive
+   elements also kills the 300ms double-tap-zoom delay so
+   taps feel native.
+   ────────────────────────────────────────────────────── */
+* {
+	-webkit-tap-highlight-color: transparent;
+}
+
+/* ── Scrollbars (light DOM) ──────────────────────────────
+   Mirror of the rules in `components/core/styles/base.css`
+   so the same skin applies to scrollable elements that live
+   in the document tree (root, page-level, light-DOM children
+   of shadow components). Single source of truth lives in
+   --scrollbar-* tokens (styles/variables.css). */
+* {
+	scrollbar-width: var(--scrollbar-firefox-width, thin);
+	scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+*::-webkit-scrollbar {
+	width: var(--scrollbar-size);
+	height: var(--scrollbar-size);
+}
+*::-webkit-scrollbar-track {
+	background: var(--scrollbar-track);
+	border-radius: var(--scrollbar-radius);
+}
+*::-webkit-scrollbar-thumb {
+	background: var(--scrollbar-thumb);
+	border-radius: var(--scrollbar-radius);
+	border: 1px solid transparent;
+}
+*::-webkit-scrollbar-thumb:hover {
+	background: var(--scrollbar-thumb-hover);
+}
+*::-webkit-scrollbar-corner {
+	background: var(--scrollbar-corner);
+}
+button,
+a,
+[role='button'],
+input,
+textarea,
+select,
+summary {
+	touch-action: manipulation;
+}

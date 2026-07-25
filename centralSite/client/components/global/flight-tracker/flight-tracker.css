@@ -1,0 +1,382 @@
+:host {
+	display: block;
+	position: relative;
+	inline-size: 100%;
+	block-size: 100%;
+	min-block-size: 22rem;
+	container-type: size;
+	color: var(--text-main);
+	--ft-radar-ring: color-mix(
+		in oklab,
+		var(--color-success, oklch(0.72 0.17 145)) 55%,
+		transparent
+	);
+	--ft-radar-sweep: color-mix(
+		in oklab,
+		var(--color-success, oklch(0.72 0.17 145)) 35%,
+		transparent
+	);
+	--ft-radar-bg: color-mix(
+		in oklab,
+		var(--bg-body, oklch(0.18 0.02 250)) 92%,
+		oklch(0.25 0.04 160)
+	);
+	--ft-panel-bg: color-mix(
+		in oklab,
+		var(--bg-elevated, var(--bg-body)) 92%,
+		transparent
+	);
+}
+
+.ft {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: auto minmax(0, 1fr);
+	gap: var(--space-2, 0.5rem);
+	inline-size: 100%;
+	block-size: 100%;
+	min-block-size: inherit;
+}
+
+.ft-toolbar {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: var(--space-2, 0.5rem);
+	padding-inline: var(--space-1, 0.25rem);
+}
+
+.ft-heading {
+	font-size: var(--text-sm, 0.875rem);
+	font-weight: var(--weight-semibold, 600);
+	margin: 0;
+}
+
+.ft-meta {
+	font-size: var(--text-xs, 0.75rem);
+	color: var(--text-muted, var(--text-main));
+}
+
+.ft-meta[data-tone='danger'] {
+	color: var(--color-danger, oklch(0.62 0.2 25));
+}
+
+.ft-body {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr);
+	gap: var(--space-2, 0.5rem);
+	min-block-size: 0;
+	min-inline-size: 0;
+	block-size: 100%;
+}
+
+.ft[data-layout='split'] .ft-body {
+	grid-template-columns: minmax(0, 1.2fr) minmax(12rem, 0.8fr);
+}
+
+.ft[data-layout='triple'] .ft-body {
+	grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(12rem, 0.75fr);
+}
+
+.ft-pane {
+	position: relative;
+	min-inline-size: 0;
+	min-block-size: 12rem;
+	border-radius: var(--radius-lg, 0.75rem);
+	overflow: hidden;
+	border: 1px solid
+		color-mix(in oklab, var(--border-color, currentColor) 35%, transparent);
+	background: var(--ft-panel-bg);
+}
+
+.ft-pane-map {
+	min-block-size: 14rem;
+	/* Host for absolute map + optional radar HUD overlay. */
+	isolation: isolate;
+}
+
+.ft-map-host {
+	position: absolute;
+	inset: 0;
+	z-index: 0;
+}
+
+.ft-pane-map ui-google-map,
+.ft-pane-map ui-openstreetmap,
+.ft-pane-map ui-leaflet,
+.ft-pane-map ui-openlayers {
+	inline-size: 100%;
+	block-size: 100%;
+	min-block-size: 14rem;
+}
+
+/* Polar HUD on the map — rings/sweep/blips, map stays interactive underneath. */
+.ft-map-radar {
+	position: absolute;
+	inset: 0;
+	z-index: 4;
+	display: grid;
+	place-items: center;
+	pointer-events: none;
+	background:
+		radial-gradient(
+			circle at center,
+			transparent 0 42%,
+			color-mix(in oklab, black 28%, transparent) 100%
+		);
+}
+
+.ft-map-radar .ft-radar-svg {
+	inline-size: min(100%, 100cqmin, 28rem);
+	block-size: min(100%, 100cqmin, 28rem);
+	max-inline-size: 92%;
+	max-block-size: 92%;
+}
+
+.ft-map-radar .ft-blip,
+.ft-map-radar .ft-blip-group {
+	pointer-events: auto;
+	cursor: pointer;
+}
+
+.ft-map-radar .ft-ring {
+	stroke: color-mix(
+		in oklab,
+		var(--color-success, oklch(0.72 0.17 145)) 70%,
+		white
+	);
+	stroke-opacity: 0.85;
+}
+
+.ft-map-radar .ft-cross {
+	stroke: color-mix(
+		in oklab,
+		var(--color-success, oklch(0.72 0.17 145)) 55%,
+		white
+	);
+}
+
+.ft-map-radar .ft-sweep-fan {
+	fill: color-mix(
+		in oklab,
+		var(--color-success, oklch(0.72 0.17 145)) 42%,
+		transparent
+	);
+}
+
+.ft-map-radar .ft-blip-label {
+	fill: oklch(0.98 0.01 100);
+	stroke: color-mix(in oklab, black 55%, transparent);
+}
+
+.ft-radar {
+	position: relative;
+	inline-size: 100%;
+	block-size: 100%;
+	min-block-size: 14rem;
+	aspect-ratio: 1;
+	margin-inline: auto;
+	background:
+		radial-gradient(
+			circle at center,
+			transparent 0 48%,
+			color-mix(in oklab, black 35%, transparent) 100%
+		),
+		var(--ft-radar-bg);
+}
+
+.ft-radar-origin {
+	fill: var(--color-success, oklch(0.72 0.17 145));
+}
+
+.ft-radar-svg {
+	position: absolute;
+	inset: 0;
+	inline-size: 100%;
+	block-size: 100%;
+}
+
+.ft-ring {
+	fill: none;
+	stroke: var(--ft-radar-ring);
+	stroke-width: 1;
+	overflow: visible;
+}
+
+.ft-cross {
+	stroke: color-mix(in oklab, var(--ft-radar-ring) 70%, transparent);
+	stroke-width: 1;
+}
+
+.ft-sweep {
+	transform-origin: 50% 50%;
+	animation: ft-sweep 4s linear infinite;
+}
+
+.ft-sweep-fan {
+	fill: var(--ft-radar-sweep);
+}
+
+.ft-blip {
+	cursor: pointer;
+	fill: var(--color-success, oklch(0.72 0.17 145));
+	stroke: oklch(0.98 0.01 100);
+	stroke-width: 1;
+}
+
+.ft-blip[data-active] {
+	fill: var(--color-warning, oklch(0.8 0.16 85));
+	stroke-width: 2;
+}
+
+.ft-blip-label {
+	fill: var(--text-main);
+	font-size: 7px;
+	font-weight: 600;
+	pointer-events: none;
+	paint-order: stroke;
+	stroke: color-mix(in oklab, var(--bg-body) 80%, transparent);
+	stroke-width: 2px;
+}
+
+.ft-ac {
+	transform-box: fill-box;
+	transform-origin: center;
+}
+
+.ft-side {
+	display: grid;
+	grid-template-rows: auto minmax(0, 1fr) auto;
+	gap: var(--space-2, 0.5rem);
+	padding: var(--space-3, 0.75rem);
+	min-block-size: 0;
+}
+
+.ft-side-heading {
+	font-size: var(--text-xs, 0.75rem);
+	font-weight: var(--weight-semibold, 600);
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	color: var(--text-muted, var(--text-main));
+	margin: 0;
+}
+
+.ft-list {
+	display: flex;
+	flex-direction: column;
+	gap: 0.25rem;
+	min-block-size: 0;
+	overflow: auto;
+}
+
+.ft-row {
+	display: grid;
+	grid-template-columns: 1fr auto;
+	gap: 0.15rem 0.5rem;
+	padding: 0.45rem 0.55rem;
+	border-radius: var(--radius-md, 0.5rem);
+	border: 1px solid transparent;
+	background: color-mix(in oklab, var(--bg-body) 55%, transparent);
+	color: inherit;
+	text-align: start;
+	cursor: pointer;
+	font: inherit;
+}
+
+.ft-row:hover,
+.ft-row:focus-visible {
+	border-color: color-mix(
+		in oklab,
+		var(--color-accent, oklch(0.65 0.16 250)) 50%,
+		transparent
+	);
+	outline: none;
+}
+
+.ft-row[data-active] {
+	border-color: var(--color-accent, oklch(0.65 0.16 250));
+	background: color-mix(
+		in oklab,
+		var(--color-accent, oklch(0.65 0.16 250)) 16%,
+		transparent
+	);
+}
+
+.ft-row-callsign {
+	font-size: var(--text-sm, 0.875rem);
+	font-weight: var(--weight-semibold, 600);
+}
+
+.ft-row-meta {
+	grid-column: 1 / -1;
+	font-size: var(--text-xs, 0.75rem);
+	color: var(--text-muted, var(--text-main));
+}
+
+.ft-row-alt {
+	font-size: var(--text-xs, 0.75rem);
+	font-variant-numeric: tabular-nums;
+	color: var(--text-muted, var(--text-main));
+}
+
+.ft-detail {
+	display: grid;
+	gap: 0.35rem;
+	padding: var(--space-2, 0.5rem);
+	border-radius: var(--radius-md, 0.5rem);
+	background: color-mix(in oklab, var(--bg-body) 60%, transparent);
+	font-size: var(--text-xs, 0.75rem);
+}
+
+.ft-detail[hidden] {
+	display: none;
+}
+
+.ft-detail-title {
+	font-size: var(--text-sm, 0.875rem);
+	font-weight: var(--weight-semibold, 600);
+}
+
+.ft-detail-grid {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	gap: 0.2rem 0.75rem;
+}
+
+.ft-detail-grid dt {
+	color: var(--text-muted, var(--text-main));
+	margin: 0;
+}
+
+.ft-detail-grid dd {
+	margin: 0;
+	font-variant-numeric: tabular-nums;
+}
+
+.ft-empty {
+	font-size: var(--text-xs, 0.75rem);
+	color: var(--text-muted, var(--text-main));
+	padding: var(--space-3, 0.75rem);
+}
+
+@keyframes ft-sweep {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.ft-sweep {
+		animation: none;
+	}
+}
+
+@container (max-width: 40rem) {
+	.ft[data-layout='split'] .ft-body,
+	.ft[data-layout='triple'] .ft-body {
+		grid-template-columns: 1fr;
+	}
+}

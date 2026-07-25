@@ -1,0 +1,6 @@
+{
+	"watch": ["centralSite/server", "centralSite/database"],
+	"ext": "js,mjs,json",
+	"ignore": ["centralSite/server/.session-secret"],
+	"delay": "300"
+}

@@ -1,0 +1,31 @@
+{
+	"name": "lawnboss",
+	"version": "1.0.2",
+	"description": "Lawn Boss NJ — static marketing site",
+	"keywords": [],
+	"homepage": "https://lawnbossnj.com",
+	"license": "ISC",
+	"type": "module",
+	"dependencies": {
+		"@universalweb/utilitylib": "github:universalweb/utilitylib",
+		"express": "^5.2.1",
+		"nodemon": "^3.1.14"
+	},
+	"devDependencies": {
+		"@eslint/json": "^2.0.0",
+		"@eslint/markdown": "^8.0.2",
+		"@stylistic/eslint-plugin": "^5.10.0",
+		"@types/bun": "^1.3.14",
+		"eslint": "^10.4.1",
+		"eslint-plugin-jsdoc": "^63.0.1",
+		"eslint-plugin-security": "^4.0.0",
+		"eslint-plugin-sonarjs": "^4.0.3",
+		"globals": "^17.6.0",
+		"lucide-static": "^1.17.0",
+		"ts-api-utils": "^2.5.0"
+	},
+	"scripts": {
+		"start": "node centralSite/server/index.js",
+		"dev": "nodemon centralSite/server/index.js"
+	}
+}

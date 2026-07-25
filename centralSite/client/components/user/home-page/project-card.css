@@ -1,0 +1,72 @@
+:host {
+	display: flex;
+	flex-direction: column;
+	flex: 1 1 auto;
+	block-size: 100%;
+	min-block-size: 100%;
+	font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+	--lb-ease: cubic-bezier(0.22, 1, 0.36, 1);
+	--lb-dur: 220ms;
+	--lb-media-h: 13.5rem;
+	--lb-card-radius: var(--radius-lg, 0.75rem);
+	/* Match previous dark project / service card surfaces */
+	--bg-panel: oklch(0.23 0.028 155);
+	--surface-border: oklch(0.4 0.02 155 / 0.35);
+	--text-primary: oklch(0.96 0.01 145);
+	--text-muted: oklch(0.88 0.02 150 / 0.88);
+	--elev-1: 0 0.5rem 1.5rem oklch(0 0 0 / 0.28);
+	--elev-hover: 0 0.85rem 2rem oklch(0 0 0 / 0.4);
+	color: oklch(0.96 0.01 145);
+	border-radius: var(--lb-card-radius);
+	overflow: hidden;
+}
+
+.project-ui-card {
+	display: flex;
+	flex-direction: column;
+	flex: 1 1 auto;
+	block-size: 100%;
+	min-block-size: 100%;
+	color: inherit;
+	transform: translate3d(0, 0, 0);
+	transition: transform var(--lb-dur) var(--lb-ease);
+	will-change: transform;
+}
+
+.project-ui-card:hover {
+	transform: translate3d(0, -0.15rem, 0);
+	--surface-border: oklch(0.55 0.1 150 / 0.4);
+}
+
+/* Fixed media band — same height across project cards */
+.project-ui-card img[slot='media'] {
+	display: block;
+	inline-size: 100%;
+	block-size: var(--lb-media-h);
+	min-block-size: var(--lb-media-h);
+	max-block-size: var(--lb-media-h);
+	object-fit: cover;
+	object-position: center;
+	background: oklch(0.18 0.03 155);
+	border-radius: var(--lb-card-radius) var(--lb-card-radius) 0 0;
+	transform: translate3d(0, 0, 0) scale(1);
+	transform-origin: center;
+	backface-visibility: hidden;
+	transition: transform 420ms var(--lb-ease);
+	will-change: transform;
+}
+
+.project-ui-card:hover img[slot='media'] {
+	transform: translate3d(0, 0, 0) scale(1.08);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.project-ui-card,
+	.project-ui-card:hover,
+	.project-ui-card img[slot='media'],
+	.project-ui-card:hover img[slot='media'] {
+		transition: none;
+		transform: none;
+		will-change: auto;
+	}
+}

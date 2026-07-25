@@ -1,0 +1,55 @@
+:host {
+	display: block;
+}
+
+.ft-row {
+	display: grid;
+	grid-template-columns: 1fr auto;
+	gap: 0.15rem 0.5rem;
+	inline-size: 100%;
+	padding: 0.45rem 0.55rem;
+	border-radius: var(--radius-md, 0.5rem);
+	border: 1px solid transparent;
+	background: color-mix(in oklab, var(--bg-body, Canvas) 55%, transparent);
+	color: inherit;
+	text-align: start;
+	cursor: pointer;
+	font: inherit;
+}
+
+.ft-row:hover,
+.ft-row:focus-visible {
+	border-color: color-mix(
+		in oklab,
+		var(--color-accent, oklch(0.65 0.16 250)) 50%,
+		transparent
+	);
+	outline: none;
+}
+
+:host([data-active]) .ft-row,
+.ft-row[data-active] {
+	border-color: var(--color-accent, oklch(0.65 0.16 250));
+	background: color-mix(
+		in oklab,
+		var(--color-accent, oklch(0.65 0.16 250)) 16%,
+		transparent
+	);
+}
+
+.ft-row-callsign {
+	font-size: var(--text-sm, 0.875rem);
+	font-weight: var(--weight-semibold, 600);
+}
+
+.ft-row-meta {
+	grid-column: 1 / -1;
+	font-size: var(--text-xs, 0.75rem);
+	color: var(--text-muted, var(--text-main));
+}
+
+.ft-row-alt {
+	font-size: var(--text-xs, 0.75rem);
+	font-variant-numeric: tabular-nums;
+	color: var(--text-muted, var(--text-main));
+}
