@@ -86,7 +86,7 @@ export class HomePage extends WebComponent {
 				id: 'hardscape',
 				label: 'Patios & Hardscape',
 				icon: 'brick-wall',
-				image: '/images/service-hardscape.jpg',
+				image: '/images/service-walkway.jpg',
 				description:
 					'Custom paver patios, outdoor living spaces, and fire features built for New Jersey weather.',
 			},
@@ -102,7 +102,7 @@ export class HomePage extends WebComponent {
 				id: 'walkways',
 				label: 'Walkways & Curb Appeal',
 				icon: 'footprints',
-				image: '/images/service-walkway.jpg',
+				image: '/images/service-hardscape.jpg',
 				description:
 					'Interlocking walkways, plantings, and lighting that make every arrival feel premium.',
 			},
@@ -110,7 +110,7 @@ export class HomePage extends WebComponent {
 				id: 'retaining',
 				label: 'Retaining Walls',
 				icon: 'mountain',
-				image: '/images/project-retaining.jpg',
+				image: '/images/project-lighting.jpg',
 				description:
 					'Structural walls and rock gardens that stop erosion and create usable outdoor levels.',
 			},
@@ -118,7 +118,7 @@ export class HomePage extends WebComponent {
 				id: 'lighting',
 				label: 'Landscape Lighting',
 				icon: 'lamp',
-				image: '/images/project-lighting.jpg',
+				image: '/images/project-retaining.jpg',
 				description:
 					'Path, accent, and safety lighting that showcases plantings after dark.',
 			},
@@ -128,13 +128,13 @@ export class HomePage extends WebComponent {
 				id: 'p1',
 				label: 'Backyard Patio Living',
 				description: 'Paver patio, fire feature, and seating walls for everyday entertaining.',
-				image: '/images/service-hardscape.jpg',
+				image: '/images/service-walkway.jpg',
 			},
 			{
 				id: 'p2',
 				label: 'Front Walk Refresh',
 				description: 'New walkway, beds, and curb appeal lighting for a welcoming entry.',
-				image: '/images/service-walkway.jpg',
+				image: '/images/service-hardscape.jpg',
 			},
 			{
 				id: 'p3',
@@ -146,13 +146,13 @@ export class HomePage extends WebComponent {
 				id: 'p4',
 				label: 'Evening Landscape Light',
 				description: 'Warm path lights and tree uplighting for night curb appeal.',
-				image: '/images/project-lighting.jpg',
+				image: '/images/project-retaining.jpg',
 			},
 			{
 				id: 'p5',
 				label: 'Slope & Retaining Wall',
 				description: 'Stone wall and plantings that tamed a steep grade.',
-				image: '/images/project-retaining.jpg',
+				image: '/images/project-lighting.jpg',
 			},
 		],
 		reviews: [
